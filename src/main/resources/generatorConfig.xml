@@ -67,7 +67,7 @@
         <!--tableName:指定了表名
             domainObjectName:指定了实体类的名称
         -->
-        <table tableName="me_user" domainObjectName="MeUser"
+        <table tableName="me_shop" domainObjectName="MeShop"
                enableCountByExample="true" enableUpdateByExample="true"
                enableDeleteByExample="true" enableSelectByExample="true"
                selectByExampleQueryId="true">

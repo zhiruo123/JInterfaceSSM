@@ -20,6 +20,8 @@ public interface MeUserMapper {
 
     MeUser selectByPrimaryKey(Integer id);
 
+    MeUser selectByUsername(String username);
+
     int updateByExampleSelective(@Param("record") MeUser record, @Param("example") MeUserExample example);
 
     int updateByExample(@Param("record") MeUser record, @Param("example") MeUserExample example);

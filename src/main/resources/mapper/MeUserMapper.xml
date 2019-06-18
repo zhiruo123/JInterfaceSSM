@@ -90,6 +90,14 @@
     from me_user
     where id = #{id,jdbcType=INTEGER}
   </select>
+
+  <select id="selectByUsername" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from me_user
+    where username = #{username}
+  </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from me_user
     where id = #{id,jdbcType=INTEGER}

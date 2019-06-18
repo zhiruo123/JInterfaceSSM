@@ -25,4 +25,11 @@ public class MeUserServiceImpl implements MeUserService {
         int i = meUserMapper.insert(record);
         return i;
     }
+
+    @Override
+    public MeUser selectByUsername(String username) {
+        MeUser meUser = meUserMapper.selectByUsername(username);
+        return meUser;
+    }
+
 }

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @Author ：zhazhatao.
@@ -17,28 +18,55 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @Modified By：
  * @Version: 1.0
  */
-@Controller
+@RestController
 @RequestMapping("/user")
 public class UserController {
     @Autowired
     MeUserService meUserService;
 
-    @RequestMapping(value = "/register",produces = "text/html; charset=utf-8", method = RequestMethod.GET)
-    @ResponseBody
+    @RequestMapping(value = "/register",produces = "text/html; charset=utf-8", method = {RequestMethod.GET , RequestMethod.POST})
     public String register(String username , String password) {
         Msg msg = new Msg();
         Gson gson = new Gson();
         if(username == null || password == null) {
             msg = new Msg(0, "用户名密码不能为空");
         } else {
-            MeUser meUser = new MeUser();
-            meUser.setPassword(password);
-            meUser.setUsername(username);
-            int i = meUserService.insert(meUser);
-            if (i ==1 ) {
-                msg = new Msg(i, "注册成功");
+            try {
+                MeUser meUser = meUserService.selectByUsername(username);
+                if (meUser == null) {
+                    meUser = new MeUser();
+                    meUser.setPassword(password);
+                    meUser.setUsername(username);
+                    int i = meUserService.insert(meUser);
+                    if (i == 1) {
+                        msg = new Msg(i, "注册成功");
+                    } else {
+                        msg = new Msg(i, "注册失败");
+                    }
+                } else {
+                    msg = new Msg(3, "用户已存在");
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                msg = new Msg(4, "系统错误—————");
+            }
+        }
+        return gson.toJson(msg);
+    }
+
+    @RequestMapping(value = "/login",produces = "text/html; charset=utf-8", method = {RequestMethod.GET , RequestMethod.POST})
+
+    public String login(String username , String password) {
+        Msg msg = new Msg();
+        Gson gson = new Gson();
+        MeUser meUser = meUserService.selectByUsername(username);
+        if (meUser == null) {
+            msg = new Msg(0 , "用户不存在");
+        } else {
+            if (meUser.getPassword() .equals(password) ) {
+                msg = new Msg(1 , "登陆成功");
             } else {
-                msg = new Msg(i, "注册失败");
+                msg = new Msg(2, "密码错误");
             }
         }
         return gson.toJson(msg);
