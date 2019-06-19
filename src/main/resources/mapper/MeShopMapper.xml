@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.skyrin.ssm.dao.MeShopMapper" >
+  <resultMap id="BaseResultMap" type="com.skyrin.ssm.model.MeShop" >
+    <constructor >
+      <idArg column="shop_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="shop_address" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="shop_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="shop_time" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="shop_phone" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="shop_image" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="shop_longitude" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="shop_latitude" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="shop_type" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="shop_desc" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="shop_spend" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="shop_create_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    shop_id, shop_address, shop_name, shop_time, shop_phone, shop_image, shop_longitude, 
+    shop_latitude, shop_type, shop_desc, shop_spend, shop_create_time
+  </sql>
+
+
+
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.skyrin.ssm.model.MeShopExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from me_shop
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="shopType != null">
+      where shop_type = '${shopType}'
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="page != null and pageSize != null and pageSize != 0">
+      limit #{page},#{pageSize}
+    </if>
+
+
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from me_shop
+    where shop_id = #{shopId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from me_shop
+    where shop_id = #{shopId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.skyrin.ssm.model.MeShopExample" >
+    delete from me_shop
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.skyrin.ssm.model.MeShop" >
+    insert into me_shop (shop_id, shop_address, shop_name, 
+      shop_time, shop_phone, shop_image, 
+      shop_longitude, shop_latitude, shop_type, 
+      shop_desc, shop_spend, shop_create_time
+      )
+    values (#{shopId,jdbcType=INTEGER}, #{shopAddress,jdbcType=VARCHAR}, #{shopName,jdbcType=VARCHAR}, 
+      #{shopTime,jdbcType=VARCHAR}, #{shopPhone,jdbcType=VARCHAR}, #{shopImage,jdbcType=VARCHAR}, 
+      #{shopLongitude,jdbcType=VARCHAR}, #{shopLatitude,jdbcType=VARCHAR}, #{shopType,jdbcType=VARCHAR}, 
+      #{shopDesc,jdbcType=VARCHAR}, #{shopSpend,jdbcType=VARCHAR}, #{shopCreateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.skyrin.ssm.model.MeShop" >
+    insert into me_shop
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="shopId != null" >
+        shop_id,
+      </if>
+      <if test="shopAddress != null" >
+        shop_address,
+      </if>
+      <if test="shopName != null" >
+        shop_name,
+      </if>
+      <if test="shopTime != null" >
+        shop_time,
+      </if>
+      <if test="shopPhone != null" >
+        shop_phone,
+      </if>
+      <if test="shopImage != null" >
+        shop_image,
+      </if>
+      <if test="shopLongitude != null" >
+        shop_longitude,
+      </if>
+      <if test="shopLatitude != null" >
+        shop_latitude,
+      </if>
+      <if test="shopType != null" >
+        shop_type,
+      </if>
+      <if test="shopDesc != null" >
+        shop_desc,
+      </if>
+      <if test="shopSpend != null" >
+        shop_spend,
+      </if>
+      <if test="shopCreateTime != null" >
+        shop_create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="shopId != null" >
+        #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="shopAddress != null" >
+        #{shopAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="shopName != null" >
+        #{shopName,jdbcType=VARCHAR},
+      </if>
+      <if test="shopTime != null" >
+        #{shopTime,jdbcType=VARCHAR},
+      </if>
+      <if test="shopPhone != null" >
+        #{shopPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="shopImage != null" >
+        #{shopImage,jdbcType=VARCHAR},
+      </if>
+      <if test="shopLongitude != null" >
+        #{shopLongitude,jdbcType=VARCHAR},
+      </if>
+      <if test="shopLatitude != null" >
+        #{shopLatitude,jdbcType=VARCHAR},
+      </if>
+      <if test="shopType != null" >
+        #{shopType,jdbcType=VARCHAR},
+      </if>
+      <if test="shopDesc != null" >
+        #{shopDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="shopSpend != null" >
+        #{shopSpend,jdbcType=VARCHAR},
+      </if>
+      <if test="shopCreateTime != null" >
+        #{shopCreateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.skyrin.ssm.model.MeShopExample" resultType="java.lang.Integer" >
+    select count(*) from me_shop
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update me_shop
+    <set >
+      <if test="record.shopId != null" >
+        shop_id = #{record.shopId,jdbcType=INTEGER},
+      </if>
+      <if test="record.shopAddress != null" >
+        shop_address = #{record.shopAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shopName != null" >
+        shop_name = #{record.shopName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shopTime != null" >
+        shop_time = #{record.shopTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shopPhone != null" >
+        shop_phone = #{record.shopPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shopImage != null" >
+        shop_image = #{record.shopImage,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shopLongitude != null" >
+        shop_longitude = #{record.shopLongitude,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shopLatitude != null" >
+        shop_latitude = #{record.shopLatitude,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shopType != null" >
+        shop_type = #{record.shopType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shopDesc != null" >
+        shop_desc = #{record.shopDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shopSpend != null" >
+        shop_spend = #{record.shopSpend,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shopCreateTime != null" >
+        shop_create_time = #{record.shopCreateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update me_shop
+    set shop_id = #{record.shopId,jdbcType=INTEGER},
+      shop_address = #{record.shopAddress,jdbcType=VARCHAR},
+      shop_name = #{record.shopName,jdbcType=VARCHAR},
+      shop_time = #{record.shopTime,jdbcType=VARCHAR},
+      shop_phone = #{record.shopPhone,jdbcType=VARCHAR},
+      shop_image = #{record.shopImage,jdbcType=VARCHAR},
+      shop_longitude = #{record.shopLongitude,jdbcType=VARCHAR},
+      shop_latitude = #{record.shopLatitude,jdbcType=VARCHAR},
+      shop_type = #{record.shopType,jdbcType=VARCHAR},
+      shop_desc = #{record.shopDesc,jdbcType=VARCHAR},
+      shop_spend = #{record.shopSpend,jdbcType=VARCHAR},
+      shop_create_time = #{record.shopCreateTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.skyrin.ssm.model.MeShop" >
+    update me_shop
+    <set >
+      <if test="shopAddress != null" >
+        shop_address = #{shopAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="shopName != null" >
+        shop_name = #{shopName,jdbcType=VARCHAR},
+      </if>
+      <if test="shopTime != null" >
+        shop_time = #{shopTime,jdbcType=VARCHAR},
+      </if>
+      <if test="shopPhone != null" >
+        shop_phone = #{shopPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="shopImage != null" >
+        shop_image = #{shopImage,jdbcType=VARCHAR},
+      </if>
+      <if test="shopLongitude != null" >
+        shop_longitude = #{shopLongitude,jdbcType=VARCHAR},
+      </if>
+      <if test="shopLatitude != null" >
+        shop_latitude = #{shopLatitude,jdbcType=VARCHAR},
+      </if>
+      <if test="shopType != null" >
+        shop_type = #{shopType,jdbcType=VARCHAR},
+      </if>
+      <if test="shopDesc != null" >
+        shop_desc = #{shopDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="shopSpend != null" >
+        shop_spend = #{shopSpend,jdbcType=VARCHAR},
+      </if>
+      <if test="shopCreateTime != null" >
+        shop_create_time = #{shopCreateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where shop_id = #{shopId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.skyrin.ssm.model.MeShop" >
+    update me_shop
+    set shop_address = #{shopAddress,jdbcType=VARCHAR},
+      shop_name = #{shopName,jdbcType=VARCHAR},
+      shop_time = #{shopTime,jdbcType=VARCHAR},
+      shop_phone = #{shopPhone,jdbcType=VARCHAR},
+      shop_image = #{shopImage,jdbcType=VARCHAR},
+      shop_longitude = #{shopLongitude,jdbcType=VARCHAR},
+      shop_latitude = #{shopLatitude,jdbcType=VARCHAR},
+      shop_type = #{shopType,jdbcType=VARCHAR},
+      shop_desc = #{shopDesc,jdbcType=VARCHAR},
+      shop_spend = #{shopSpend,jdbcType=VARCHAR},
+      shop_create_time = #{shopCreateTime,jdbcType=TIMESTAMP}
+    where shop_id = #{shopId,jdbcType=INTEGER}
+  </update>
+</mapper>
