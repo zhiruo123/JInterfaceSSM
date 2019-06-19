@@ -6,14 +6,6 @@ import com.skyrin.ssm.service.MeUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-/**
- * @Author £ºzhazhatao.
- * @Date £ºCreated in 10:41 2019/6/18
- * @Description£º
- * @Modified By£º
- * @Version: 1.0
- */
-
 @Service
 public class MeUserServiceImpl implements MeUserService {
 

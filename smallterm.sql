@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50624
 File Encoding         : 65001
 
-Date: 2019-06-19 14:05:08
+Date: 2019-06-19 20:14:19
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -28,7 +28,7 @@ CREATE TABLE `me_shop` (
   `shop_image` varchar(255) NOT NULL,
   `shop_longitude` varchar(32) NOT NULL,
   `shop_latitude` varchar(32) NOT NULL,
-  `shop_type` varchar(2) NOT NULL,
+  `shop_type` varchar(22) NOT NULL,
   `shop_desc` varchar(255) NOT NULL,
   `shop_spend` varchar(12) NOT NULL,
   `shop_create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -38,15 +38,15 @@ CREATE TABLE `me_shop` (
 -- ----------------------------
 -- Records of me_shop
 -- ----------------------------
-INSERT INTO `me_shop` VALUES ('1', '杭州', '商品1', '8:00-20:00', '100-800820', 'http://money.ycwb.com/pic/2019-05/16/681aa47b-e207-4a62-b565-bb3afb723d67.jpg', '29.965598592898655', '120.58845099124592\r\n', '超市', '描述。。。。。。。。。。。。。。。。。', '20元', '2019-06-19 09:50:17');
-INSERT INTO `me_shop` VALUES ('2', '杭州', '商品2', '8:00-20:00', '100-800820', 'http://www.lczp88.com/UploadFiles/FCK/2015-03/zhaopai0.jpg', '29.965598592898655', '120.58845099124592\r\n', '超市', '描述。。。。。。。。。。。。。。。。。', '20元', '2019-06-19 09:50:17');
-INSERT INTO `me_shop` VALUES ('3', '杭州', '商品3', '8:00-20:00', '100-800820', 'http://money.ycwb.com/pic/2019-05/16/681aa47b-e207-4a62-b565-bb3afb723d67.jpg', '29.965598592898655', '120.58845099124592\r\n', '超市', '描述。。。。。。。。。。。。。。。。。', '20元', '2019-06-19 09:50:17');
-INSERT INTO `me_shop` VALUES ('4', '杭州', '商品4', '8:00-20:00', '100-800820', 'http://www.lczp88.com/UploadFiles/FCK/2015-03/zhaopai0.jpg', '29.965598592898655', '120.58845099124592\r\n', '超市', '描述。。。。。。。。。。。。。。。。。', '20元', '2019-06-19 09:50:17');
-INSERT INTO `me_shop` VALUES ('5', '杭州', '商品5', '8:00-20:00', '100-800820', 'http://money.ycwb.com/pic/2019-05/16/681aa47b-e207-4a62-b565-bb3afb723d67.jpg', '29.965598592898655', '120.58845099124592\r\n', '超市', '描述。。。。。。。。。。。。。。。。。', '20元', '2019-06-19 09:50:17');
-INSERT INTO `me_shop` VALUES ('6', '杭州', '商品6', '8:00-20:00', '100-800820', 'http://www.lczp88.com/UploadFiles/FCK/2015-03/zhaopai0.jpg', '29.965598592898655', '120.58845099124592\r\n', '超市', '描述。。。。。。。。。。。。。。。。。', '20元', '2019-06-19 09:50:17');
-INSERT INTO `me_shop` VALUES ('7', '杭州', '商品7', '8:00-20:00', '100-800820', 'http://money.ycwb.com/pic/2019-05/16/681aa47b-e207-4a62-b565-bb3afb723d67.jpg', '29.965598592898655', '120.58845099124592\r\n', '超市', '描述。。。。。。。。。。。。。。。。。', '20元', '2019-06-19 09:50:17');
-INSERT INTO `me_shop` VALUES ('8', '杭州', '商品8', '8:00-20:00', '100-800820', 'http://www.lczp88.com/UploadFiles/FCK/2015-03/zhaopai0.jpg', '29.965598592898655', '120.58845099124592\r\n', '超市', '描述。。。。。。。。。。。。。。。。。', '20元', '2019-06-19 09:50:17');
-INSERT INTO `me_shop` VALUES ('9', '杭州', '商品9', '8:00-20:00', '100-800820', 'http://money.ycwb.com/pic/2019-05/16/681aa47b-e207-4a62-b565-bb3afb723d67.jpg\r\nhttp://www.lczp88.com/UploadFiles/FCK/2015-03/zhaopai0.jpg', '29.965598592898655', '120.58845099124592\r\n', '超市', '描述。。。。。。。。。。。。。。。。。', '20元', '2019-06-19 09:50:17');
+INSERT INTO `me_shop` VALUES ('1', '杭州', '商户1', '8:00-20:00', '100-800820', 'http://money.ycwb.com/pic/2019-05/16/681aa47b-e207-4a62-b565-bb3afb723d67.jpg', '120.58845099124592', '29.965598592898655', '餐饮美食', '描述。。。。。。。。。。。。。。。。。', '20元', '2019-06-19 16:20:21');
+INSERT INTO `me_shop` VALUES ('2', '杭州', '商户2', '8:00-20:00', '100-800820', 'http://www.lczp88.com/UploadFiles/FCK/2015-03/zhaopai0.jpg', '120.58845099124592', '29.965598592898655', '餐饮美食', '描述。。。。。。。。。。。。。。。。。', '20元', '2019-06-19 16:20:21');
+INSERT INTO `me_shop` VALUES ('3', '杭州', '商户3', '8:00-20:00', '100-800820', 'http://money.ycwb.com/pic/2019-05/16/681aa47b-e207-4a62-b565-bb3afb723d67.jpg', '120.58845099124592', '29.965598592898655', '休闲娱乐', '描述。。。。。。。。。。。。。。。。。', '20元', '2019-06-19 16:20:21');
+INSERT INTO `me_shop` VALUES ('4', '杭州', '商户4', '8:00-20:00', '100-800820', 'http://www.lczp88.com/UploadFiles/FCK/2015-03/zhaopai0.jpg', '120.58845099124592', '29.965598592898655', '休闲娱乐', '描述。。。。。。。。。。。。。。。。。', '20元', '2019-06-19 16:20:21');
+INSERT INTO `me_shop` VALUES ('5', '杭州', '商户5', '8:00-20:00', '100-800820', 'http://money.ycwb.com/pic/2019-05/16/681aa47b-e207-4a62-b565-bb3afb723d67.jpg', '120.58845099124592', '29.965598592898655', '餐饮美食', '描述。。。。。。。。。。。。。。。。。', '20元', '2019-06-19 16:20:21');
+INSERT INTO `me_shop` VALUES ('6', '杭州', '商户6', '8:00-20:00', '100-800820', 'http://www.lczp88.com/UploadFiles/FCK/2015-03/zhaopai0.jpg', '120.58845099124592', '29.965598592898655', '餐饮美食', '描述。。。。。。。。。。。。。。。。。', '20元', '2019-06-19 16:20:21');
+INSERT INTO `me_shop` VALUES ('7', '杭州', '商户7', '8:00-20:00', '100-800820', 'http://money.ycwb.com/pic/2019-05/16/681aa47b-e207-4a62-b565-bb3afb723d67.jpg', '120.58845099124592', '29.965598592898655', '休闲娱乐', '描述。。。。。。。。。。。。。。。。。', '20元', '2019-06-19 16:20:21');
+INSERT INTO `me_shop` VALUES ('8', '杭州', '商户8', '8:00-20:00', '100-800820', 'http://www.lczp88.com/UploadFiles/FCK/2015-03/zhaopai0.jpg', '120.58845099124592', '29.965598592898655', '休闲娱乐', '描述。。。。。。。。。。。。。。。。。', '20元', '2019-06-19 16:20:21');
+INSERT INTO `me_shop` VALUES ('9', '杭州', '商户9', '8:00-20:00', '100-800820', 'http://money.ycwb.com/pic/2019-05/16/681aa47b-e207-4a62-b565-bb3afb723d67.jpg\r\nhttp://www.lczp88.com/UploadFiles/FCK/2015-03/zhaopai0.jpg', '120.58845099124592', '29.965598592898655', '休闲娱乐', '描述。。。。。。。。。。。。。。。。。', '20元', '2019-06-19 16:20:21');
 
 -- ----------------------------
 -- Table structure for me_user
@@ -62,7 +62,7 @@ CREATE TABLE `me_user` (
 -- ----------------------------
 -- Records of me_user
 -- ----------------------------
-INSERT INTO `me_user` VALUES ('1', '张松韬', '111111');
+INSERT INTO `me_user` VALUES ('1', '123456', '123456');
 INSERT INTO `me_user` VALUES ('2', '周栋利', '111111');
 INSERT INTO `me_user` VALUES ('3', '郑逸', '111111');
 INSERT INTO `me_user` VALUES ('4', '张剑峰', '111111');
