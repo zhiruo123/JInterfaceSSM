@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50624
 File Encoding         : 65001
 
-Date: 2019-06-18 19:13:48
+Date: 2019-06-19 09:27:46
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -20,7 +20,7 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 DROP TABLE IF EXISTS `me_shop`;
 CREATE TABLE `me_shop` (
-  `shop_id` int(11) NOT NULL,
+  `shop_id` int(11) NOT NULL AUTO_INCREMENT,
   `shop_address` varchar(120) NOT NULL,
   `shop_name` varchar(80) NOT NULL,
   `shop_time` varchar(30) NOT NULL,
@@ -33,11 +33,20 @@ CREATE TABLE `me_shop` (
   `shop_spend` varchar(12) NOT NULL,
   `shop_create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`shop_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of me_shop
 -- ----------------------------
+INSERT INTO `me_shop` VALUES ('1', '杭州', '商品1', '8:00-20:00', '100-800820', '', '', '', '', '', '', '2019-06-18 20:31:08');
+INSERT INTO `me_shop` VALUES ('2', '杭州', '商品2', '8:00-20:00', '100-800820', '', '', '', '', '', '', '2019-06-18 20:31:08');
+INSERT INTO `me_shop` VALUES ('3', '杭州', '商品3', '8:00-20:00', '100-800820', '', '', '', '', '', '', '2019-06-18 20:31:08');
+INSERT INTO `me_shop` VALUES ('4', '杭州', '商品4', '8:00-20:00', '100-800820', '', '', '', '', '', '', '2019-06-18 20:31:08');
+INSERT INTO `me_shop` VALUES ('5', '杭州', '商品5', '8:00-20:00', '100-800820', '', '', '', '', '', '', '2019-06-18 20:31:08');
+INSERT INTO `me_shop` VALUES ('6', '杭州', '商品6', '8:00-20:00', '100-800820', '', '', '', '', '', '', '2019-06-18 20:51:44');
+INSERT INTO `me_shop` VALUES ('7', '杭州', '商品7', '8:00-20:00', '100-800820', '', '', '', '', '', '', '2019-06-18 20:31:08');
+INSERT INTO `me_shop` VALUES ('8', '杭州', '商品8', '8:00-20:00', '100-800820', '', '', '', '', '', '', '2019-06-18 20:31:08');
+INSERT INTO `me_shop` VALUES ('9', '杭州', '商品9', '8:00-20:00', '100-800820', '', '', '', '', '', '', '2019-06-18 20:31:08');
 
 -- ----------------------------
 -- Table structure for me_user
