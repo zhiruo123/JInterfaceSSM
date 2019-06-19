@@ -17,4 +17,10 @@ public class Msg {
         this.code = code;
         this.msg = msg;
     }
+
+    public Msg(int code, String msg, Map<String, Object> data) {
+        this.code = code;
+        this.msg = msg;
+        this.data = data;
+    }
 }

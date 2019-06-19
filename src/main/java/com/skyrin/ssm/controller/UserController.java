@@ -29,7 +29,7 @@ public class UserController {
         Msg msg = new Msg();
         Gson gson = new Gson();
         if(username == null || password == null) {
-            msg = new Msg(0, "用户名密码不能为空");
+            msg = new Msg(2, "用户名密码不能为空");
         } else {
             try {
                 MeUser meUser = meUserService.selectByUsername(username);
@@ -48,7 +48,7 @@ public class UserController {
                 }
             } catch (Exception e) {
                 e.printStackTrace();
-                msg = new Msg(4, "系统错误—————");
+                msg = new Msg(404, "系统错误—————");
             }
         }
         return gson.toJson(msg);
@@ -59,15 +59,20 @@ public class UserController {
     public String login(String username , String password) {
         Msg msg = new Msg();
         Gson gson = new Gson();
-        MeUser meUser = meUserService.selectByUsername(username);
-        if (meUser == null) {
-            msg = new Msg(0 , "用户不存在");
-        } else {
-            if (meUser.getPassword() .equals(password) ) {
-                msg = new Msg(1 , "登陆成功");
+        try {
+            MeUser meUser = meUserService.selectByUsername(username);
+            if (meUser == null) {
+                msg = new Msg(0 , "用户不存在");
             } else {
-                msg = new Msg(2, "密码错误");
+                if (meUser.getPassword() .equals(password) ) {
+                    msg = new Msg(1 , "登陆成功");
+                } else {
+                    msg = new Msg(2, "密码错误");
+                }
             }
+        } catch (Exception e) {
+            e.printStackTrace();
+            msg = new Msg(404, "系统错误—————");
         }
         return gson.toJson(msg);
     }
