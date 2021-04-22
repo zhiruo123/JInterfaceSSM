@@ -20,7 +20,7 @@
     <spring.version>5.0.7.RELEASE</spring.version>
     <connector.version>8.0.11</connector.version>
     <mybatis.spring.version>1.2.3</mybatis.spring.version>
-    <mybatis.version>3.1.1</mybatis.version>
+    <mybatis.version>3.5.6</mybatis.version>
   </properties>
 
   <dependencies>
